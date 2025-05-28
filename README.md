@@ -5,6 +5,7 @@ This project demonstrates a simple **UDP-based file transfer system** written in
 ---
 
 ## TL;DR 
+Run in sequence
 ```bash
 chmod +x run.sh
 chmod +x clean.sh
