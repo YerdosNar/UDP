@@ -32,3 +32,8 @@ For Arch
 ```bash
 sudo pacman -Syu tmux
 ```
+## Future work
+- It doesn't check anything
+- Big files arrive broken, needs a fix
+- And no ACK, because it is a simple implementation.
+
