@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Compile both programs
 gcc sender.c -o send
@@ -16,11 +16,10 @@ if ! command -v tmux &> /dev/null; then
     exit 1
 fi
 
-# Start a new tmux session
 SESSION_NAME="udp_transfer"
 tmux new-session -d -s $SESSION_NAME
 
-# Start receiver in the first pane
+# execurte receive executable
 tmux send-keys -t $SESSION_NAME "cd receiver_dir && ./receive" C-m
 
 # Sleep to give receiver time to start
