@@ -10,6 +10,10 @@ chmod +x run.sh
 chmod +x clean.sh
 ./run.sh
 ```
+After testing 
+```bash
+./clean.sh
+```
 
 ---
 
