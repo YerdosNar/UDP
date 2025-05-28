@@ -1,0 +1,16 @@
+The second term project for this course will progress incrementally.
+In the Part.1, we will create sender and receiver programs that communicate via UDP sockets.
+If it's not feasible to run these programs on separate machines. you can establish communication using sockets with the localhost IP address.
+
+
+Your code must be written in C/C++ or Java (Python is not allowed), and must be able to work on Linux environment.
+The sender program is tasked with sending a large file, while the receiver will receive the data and store it in a file (You can test your program with any file that created by yourself).
+
+
+Before sending a file, the sender should send send texts of "Greeting" and the file name. When the receiver receives those texts, it must respond with "OK".
+When receiving OK, the sender starts to send the file.
+When all data is sent, the sender sends a text of "Finish". When the receiver receives that text, it should respond with a text of "WellDone"
+
+
+Submit your source codes with README file (Do not paste your code in text editor files).
+Your README file should describe how to compile/build/run your source code.

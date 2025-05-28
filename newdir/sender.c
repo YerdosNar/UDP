@@ -34,10 +34,12 @@ int main() {
     printf("Message sent: %s\n", message);
 
     // now file
-    char *filename = "test.txt";
+    char *filename = malloc(127 * sizeof(char));
+    printf("Enter file name: ");
+    scanf("%126s", filename);
     ssize_t sent_filename = sendto(sockfd, filename, strlen(filename), 0, (struct sockaddr *)&receiver_addr, sizeof(receiver_addr));
     if(sent_filename < 0) {
-        perror("Sendto filename failed, line 39");
+        perror("Sendto filename failed, line 42");
         close(sockfd);
         exit(EXIT_FAILURE);
     }
@@ -47,7 +49,7 @@ int main() {
     socklen_t addr_len = sizeof(receiver_addr);
     ssize_t recv_len = recvfrom(sockfd, buffer, BUFFER-1, 0, (struct sockaddr *)&receiver_addr, &addr_len);
     if(recv_len < 0) {
-        perror("RECVFROM failed, line 50");
+        perror("RECVFROM failed, line 52");
         close(sockfd);
         exit(EXIT_FAILURE);
     }
@@ -58,7 +60,7 @@ int main() {
     // let's open file and send chunks
     FILE *fp = fopen(filename, "rb");
     if(fp == NULL) {
-        perror("Failed to open file, line 61");
+        perror("Failed to open file, line 63");
         close(sockfd);
         exit(EXIT_FAILURE);
     }
@@ -71,7 +73,7 @@ int main() {
     while((bytes_read = fread(file_buffer, 1, BUFFER, fp)) > 0) {
         ssize_t sent = sendto(sockfd, file_buffer, bytes_read, 0, (struct sockaddr *)&receiver_addr, sizeof(receiver_addr));
         if(sent < 0) {
-            perror("sendto file chunks failed, line 74");
+            perror("sendto file chunks failed, line 76");
             fclose(fp);
             close(sockfd);
             exit(EXIT_FAILURE);
@@ -84,7 +86,7 @@ int main() {
     char *finish_msg = "Finish";
     ssize_t finish_sent = sendto(sockfd, finish_msg, strlen(finish_msg), 0, (struct sockaddr *)&receiver_addr, sizeof(receiver_addr));
     if(finish_sent < 0) {
-        perror("sendto Finish failed, line 87");
+        perror("sendto Finish failed, line 89");
         close(sockfd);
         exit(EXIT_FAILURE);
     }
