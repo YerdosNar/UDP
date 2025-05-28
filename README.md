@@ -4,6 +4,15 @@ This project demonstrates a simple **UDP-based file transfer system** written in
 
 ---
 
+## TL;DR 
+```bash
+chmod +x run.sh
+chmod +x clean.sh
+./run.sh
+```
+
+---
+
 ## 📦 Features
 
 - Transfer files over UDP from sender to receiver
