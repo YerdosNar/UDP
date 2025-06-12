@@ -8,7 +8,7 @@ mkdir sender_dir
 mkdir receiver_dir
 
 mv send sender_dir
-cp test_files/* sender_dir/
+cp ../test_files/* sender_dir/
 mv receive receiver_dir/
 
 if ! command -v tmux &> /dev/null; then
