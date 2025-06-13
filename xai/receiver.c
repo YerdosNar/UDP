@@ -31,6 +31,10 @@ void log_event(const char *event, Packet *pkt) {
     fflush(log_fp);
 }
 
+int drop(float prob) {
+    return ((float)rand() / RAND_MAX) < prob;
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 3) {
         fprintf(stderr, "Usage: %s <receiver_port> <drop_prob>\n", argv[0]);

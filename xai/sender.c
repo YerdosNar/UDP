@@ -42,6 +42,10 @@ void log_event(const char *event, Packet *pkt) {
     fflush(log_fp);
 }
 
+int drop(float prob) {
+    return ((float)rand() / RAND_MAX) < prob;
+}
+
 // Handle timeout for retransmission
 void handle_timeout(int sig) {
     if (waiting_ack) {
